@@ -18,5 +18,15 @@ const createDonor = async (req, res) => {
   }
 };
 
-module.exports = { getAllDonors, createDonor };
+const updateDonor = async (req, res) => {
+  try {
+    const updatedDonor = await Donor.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedDonor) return res.status(404).json({ message: 'Donor not found' });
+    res.json(updatedDonor);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+module.exports = { getAllDonors, createDonor, updateDonor };
 

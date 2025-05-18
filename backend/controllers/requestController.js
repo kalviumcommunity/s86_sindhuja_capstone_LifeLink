@@ -18,4 +18,15 @@ const createRequest = async (req, res) => {
   }
 };
 
-module.exports = { getAllRequests, createRequest };
+const updateRequest = async (req, res) => {
+  try {
+    const updatedRequest = await Request.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedRequest) return res.status(404).json({ message: 'Request not found' });
+    res.json(updatedRequest);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+module.exports = { getAllRequests, createRequest, updateRequest };
+
