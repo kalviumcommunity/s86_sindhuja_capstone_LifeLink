@@ -1,4 +1,4 @@
-
+const Donation = require('../models/Donation');
 
 const getAllDonations = async (req, res) => {
   try {

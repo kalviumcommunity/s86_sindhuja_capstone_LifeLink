@@ -1,4 +1,5 @@
 
+const Request = require('../models/Request');
 
 const getAllRequests = async (req, res) => {
   try {
