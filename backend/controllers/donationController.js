@@ -9,4 +9,14 @@ const getAllDonations = async (req, res) => {
   }
 };
 
-module.exports = { getAllDonations };
+const createDonation = async (req, res) => {
+  try {
+    const newDonation = new Donation(req.body);
+    await newDonation.save();
+    res.status(201).json(newDonation);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+module.exports = { getAllDonations,createDonation };
