@@ -16,6 +16,9 @@ app.use('/api/requests', requestRoutes);
 app.use('/api/donations', donationRoutes);
 
 const PORT = process.env.PORT || 5000;
+app.get('/',(req,res)=>{
+  res.send("server is running sucessfully")
+})
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });

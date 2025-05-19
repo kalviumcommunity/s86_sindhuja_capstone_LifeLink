@@ -3,7 +3,7 @@ const Request = require('../models/Request');
 
 const getAllRequests = async (req, res) => {
   try {
-    const requests = await Request.find();
+    const requests = await Request.find().populate('requestedBy');
     res.status(200).json(requests);
   } catch (err) {
     res.status(500).json({ message: err.message });

@@ -10,11 +10,13 @@ const donationSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  unitsDonated: {
-    type: Number,
-    required: true
-  }
-}, { timestamps: true });
+  bloodGroup: String,
+  volume: Number,
+  request: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Request',
+  },
+});
 
 const Donation = mongoose.model('Donation', donationSchema);
 module.exports = Donation;

@@ -2,7 +2,8 @@ const Donation = require('../models/Donation');
 
 const getAllDonations = async (req, res) => {
   try {
-    const donations = await Donation.find();
+    const donations = await Donation.find().populate('donor');
+
     res.status(200).json(donations);
   } catch (err) {
     res.status(500).json({ message: err.message });
