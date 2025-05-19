@@ -17,11 +17,17 @@ const requestSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  requestDate: {
-    type: Date,
-    default: Date.now
-  }
-}, { timestamps: true });
+  contact: String,
+  status: {
+    type: String,
+    enum: ['pending', 'fulfilled', 'cancelled'],
+    default: 'pending',
+  },
+  requestedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Donor', 
+  },
+});
 
 const Request = mongoose.model('Request', requestSchema);
 module.exports = Request;

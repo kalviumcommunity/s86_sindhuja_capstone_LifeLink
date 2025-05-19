@@ -5,6 +5,9 @@ const donorSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  email:{
+    type:String
+  },
   bloodType: {
     type: String,
     required: true
